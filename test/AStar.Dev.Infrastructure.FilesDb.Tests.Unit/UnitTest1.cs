@@ -1,10 +1,9 @@
-﻿namespace AStar.Dev.Example.ClassLib.Tests.Unit;
+﻿namespace AStar.Dev.Infrastructure.FilesDb.Tests.Unit;
 
 public class UnitTest1
 {
     [Fact]
     public void Test1()
     {
-
     }
 }

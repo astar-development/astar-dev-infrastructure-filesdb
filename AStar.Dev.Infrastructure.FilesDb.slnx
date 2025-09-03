@@ -1,0 +1,19 @@
+<Solution>
+    <Folder Name="/Solution Items/">
+        <File Path=".editorconfig"/>
+        <File Path=".gitignore"/>
+        <File Path="build-and-test.ps1"/>
+        <File Path="CodeMaid.config"/>
+        <File Path="LICENSE"/>
+        <File Path="nuget.ci.config"/>
+        <File Path="nuget.config"/>
+        <File Path="README.md"/>
+    </Folder>
+    <Folder Name="/src/">
+        <Project Path="src\AStar.Dev.Infrastructure.FilesDb\AStar.Dev.Infrastructure.FilesDb.csproj" Type="Classic C#"/>
+    </Folder>
+    <Folder Name="/test/"/>
+    <Folder Name="/test/unit/">
+        <Project Path="test\AStar.Dev.Infrastructure.FilesDb.Tests.Unit\AStar.Dev.Infrastructure.FilesDb.Tests.Unit.csproj" Type="Classic C#"/>
+    </Folder>
+</Solution>
