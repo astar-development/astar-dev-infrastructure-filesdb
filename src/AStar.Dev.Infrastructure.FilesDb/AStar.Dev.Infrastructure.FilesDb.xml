@@ -111,10 +111,6 @@
                 The list of file access details in the dB
             </summary>
         </member>
-        <member name="P:AStar.Dev.Infrastructure.FilesDb.Data.FilesContext.FileNameParts">
-            <summary>
-            </summary>
-        </member>
         <member name="P:AStar.Dev.Infrastructure.FilesDb.Data.FilesContext.TagsToIgnore">
             <summary>
                 The list of tags to ignore
@@ -216,10 +212,12 @@
         </member>
         <member name="P:AStar.Dev.Infrastructure.FilesDb.Models.DeletionStatus.SoftDeletePending">
             <summary>
+                Gets or sets when the file was marked as 'soft delete pending'. I know, shocking...
             </summary>
         </member>
         <member name="P:AStar.Dev.Infrastructure.FilesDb.Models.DeletionStatus.HardDeletePending">
             <summary>
+                Gets or sets when the file was marked as 'hard delete pending'. I know, shocking...
             </summary>
         </member>
         <member name="T:AStar.Dev.Infrastructure.FilesDb.Models.DirectoryName">
@@ -253,71 +251,6 @@
         <member name="P:AStar.Dev.Infrastructure.FilesDb.Models.DuplicatesDetails.FileName">
             <summary>
                 Gets or sets the File Name
-            </summary>
-        </member>
-        <member name="P:AStar.Dev.Infrastructure.FilesDb.Models.DuplicatesDetails.DirectoryName">
-            <summary>
-                Gets or sets the Directory Name
-            </summary>
-        </member>
-        <member name="P:AStar.Dev.Infrastructure.FilesDb.Models.DuplicatesDetails.Height">
-            <summary>
-                Gets or sets the File Height
-            </summary>
-        </member>
-        <member name="P:AStar.Dev.Infrastructure.FilesDb.Models.DuplicatesDetails.Width">
-            <summary>
-                Gets or sets the File Width
-            </summary>
-        </member>
-        <member name="P:AStar.Dev.Infrastructure.FilesDb.Models.DuplicatesDetails.FileSize">
-            <summary>
-                Gets or sets the File Size
-            </summary>
-        </member>
-        <member name="P:AStar.Dev.Infrastructure.FilesDb.Models.DuplicatesDetails.FileHandle">
-            <summary>
-                Gets or sets the File Handle
-            </summary>
-        </member>
-        <member name="P:AStar.Dev.Infrastructure.FilesDb.Models.DuplicatesDetails.IsImage">
-            <summary>
-                Gets or sets whether File is an image
-            </summary>
-        </member>
-        <member name="P:AStar.Dev.Infrastructure.FilesDb.Models.DuplicatesDetails.Instances">
-            <summary>
-                Gets or sets the Instance count for the duplicate group
-            </summary>
-        </member>
-        <member name="P:AStar.Dev.Infrastructure.FilesDb.Models.DuplicatesDetails.DetailsLastUpdated">
-            <summary>
-                Gets or sets the Details Last Updated
-            </summary>
-        </member>
-        <member name="P:AStar.Dev.Infrastructure.FilesDb.Models.DuplicatesDetails.LastViewed">
-            <summary>
-                Gets or sets the Last Viewed date
-            </summary>
-        </member>
-        <member name="P:AStar.Dev.Infrastructure.FilesDb.Models.DuplicatesDetails.SoftDeleted">
-            <summary>
-                Gets or sets the Soft Deleted flag
-            </summary>
-        </member>
-        <member name="P:AStar.Dev.Infrastructure.FilesDb.Models.DuplicatesDetails.SoftDeletePending">
-            <summary>
-                Gets or sets the SoftDeletePending flag
-            </summary>
-        </member>
-        <member name="P:AStar.Dev.Infrastructure.FilesDb.Models.DuplicatesDetails.MoveRequired">
-            <summary>
-                Gets or sets the Move Required flag
-            </summary>
-        </member>
-        <member name="P:AStar.Dev.Infrastructure.FilesDb.Models.DuplicatesDetails.HardDeletePending">
-            <summary>
-                Gets or sets the Hard Delete Pending flag
             </summary>
         </member>
         <member name="T:AStar.Dev.Infrastructure.FilesDb.Models.Event">
@@ -533,7 +466,7 @@
         </member>
         <member name="M:AStar.Dev.Infrastructure.FilesDb.Models.FileDetail.#ctor">
             <summary>
-                The default constructor required by EF Core
+                The default constructor required by EF Core etc
             </summary>
         </member>
         <member name="M:AStar.Dev.Infrastructure.FilesDb.Models.FileDetail.#ctor(System.IO.Abstractions.IFileInfo)">

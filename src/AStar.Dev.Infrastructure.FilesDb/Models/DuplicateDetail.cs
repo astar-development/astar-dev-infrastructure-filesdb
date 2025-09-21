@@ -33,7 +33,7 @@ public class DuplicatesDetails
     /// </summary>
     public int Height { get; set; }
 
-    /// <summary>
+  /// <summary>
     ///     Gets or sets the File Width
     /// </summary>
     public int Width { get; set; }

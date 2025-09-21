@@ -31,7 +31,6 @@ public class FileClassification : AuditableEntity
     /// <summary>
     ///     Gets or sets a value indicating whether the file classification is considered a "Celebrity."
     ///     This property is used to mark specific classifications with special significance.
-    /// </summary>
     public bool Celebrity { get; set; }
 
     /// <summary>

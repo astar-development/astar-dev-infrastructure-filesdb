@@ -9,9 +9,9 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <Authors>AStar Development, Jason Barden</Authors>
+        <Authors>AStar Developement, Jason Barden</Authors>
         <Company>AStar Development</Company>
-        <Copyright>AStar Development, 2025</Copyright>
+        <Copyright>AStar Developement, 2025</Copyright>
         <Description>Defines the context and models for the FilesDb.</Description>
         <DocumentationFile>$(AssemblyName).xml</DocumentationFile>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
