@@ -17,5 +17,5 @@ public static class FileDetailLastViewedExtensions
     public static IQueryable<FileDetail> WhereLastViewedIsOlderThan(this IQueryable<FileDetail> files, int days, TimeProvider time)
         => days == 0
                ? files
-               : files.Where(file => !file.FileLastViewed.HasValue || file.FileLastViewed.Value <= time.GetUtcNow().AddDays(-days));
+               : files.Where(file => !file.FileAccessDetail.LastViewed.HasValue || file.FileAccessDetail.LastViewed.Value <= time.GetUtcNow().AddDays(-days));
 }
