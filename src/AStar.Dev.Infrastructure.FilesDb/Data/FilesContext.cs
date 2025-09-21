@@ -1,4 +1,4 @@
-﻿using AStar.Dev.Infrastructure.FilesDb.Models;
+using AStar.Dev.Infrastructure.FilesDb.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace AStar.Dev.Infrastructure.FilesDb.Data;
@@ -9,7 +9,7 @@ namespace AStar.Dev.Infrastructure.FilesDb.Data;
 /// <remarks>
 ///     The list of files in the dB
 /// </remarks>
-public class FilesContext : DbContext
+public sealed class FilesContext : DbContext
 {
     /// <summary>
     /// </summary>
@@ -29,16 +29,32 @@ public class FilesContext : DbContext
     /// <summary>
     ///     The list of files in the dB
     /// </summary>
-    public virtual DbSet<FileDetail> FileDetails { get; set; } = null!;
+    public DbSet<FileDetail> Files { get; set; } = null!;
+
+    /// <summary>
+    ///     The list of file access details in the dB
+    /// </summary>
+    public DbSet<FileAccessDetail> FileAccessDetails { get; set; } = null!;
 
     /// <summary>
     /// </summary>
     public DbSet<FileNamePart> FileNameParts { get; set; } = null!;
 
     /// <summary>
-    ///     The list of Events
+    ///     The list of tags to ignore
     /// </summary>
-    public virtual DbSet<Event> Events { get; set; } = null!;
+    public DbSet<TagToIgnore> TagsToIgnore { get; set; } = null!;
+
+    /// <summary>
+    ///     The list of models to ignore completely
+    /// </summary>
+    public DbSet<ModelToIgnore> ModelsToIgnore { get; set; } = null!;
+
+    // /// <inheritdoc />
+    // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    // {
+    //     _ = optionsBuilder.UseSqlServer("Data Source=localhost,35179;Initial Catalog=filesDb;User ID=sa;Password=<SecurePasswordHere1!>;TrustServerCertificate=True");
+    // }
 
     /// <summary>
     ///     Gets or sets the File Classifications
@@ -46,9 +62,9 @@ public class FilesContext : DbContext
     public DbSet<FileClassification> FileClassifications { get; set; } = null!;
 
     /// <summary>
-    ///     Gets or sets the Duplicate Details
+    ///     Gets or sets the DuplicatesDetails loaded from the configured view in the database
     /// </summary>
-    public DbSet<DuplicateDetail> DuplicateDetails { get; set; }
+    public DbSet<DuplicatesDetails> DuplicatesDetails { get; set; } = null!;
 
     /// <summary>
     ///     The overridden OnModelCreating method
@@ -62,10 +78,10 @@ public class FilesContext : DbContext
         _ = modelBuilder.ApplyConfigurationsFromAssembly(typeof(FilesContext).Assembly);
 
         _ = modelBuilder
-            .Entity<DuplicateDetail>(eb =>
-                                     {
-                                         _ = eb.HasNoKey();
-                                         _ = eb.ToView("vw_DuplicateDetails");
-                                     });
+            .Entity<DuplicatesDetails>(eb =>
+                                       {
+                                           _ = eb.HasNoKey();
+                                           _ = eb.ToView("vw_DuplicatesDetails");
+                                       });
     }
 }

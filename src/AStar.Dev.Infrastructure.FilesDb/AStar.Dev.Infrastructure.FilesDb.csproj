@@ -30,7 +30,8 @@
         <RepositoryUrl>https://github.com/astar-development/astar-dev-infrastructure-filesdb.git</RepositoryUrl>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <Title>AStar Dev Infrastructure FilesDb</Title>
-        <Version>0.1.0</Version>
+        <PackageReleaseNotes>Rework the File Classifications area and update for AStar Functional Results.</PackageReleaseNotes>
+        <Version>0.2.0</Version>
     </PropertyGroup>
 
     <ItemGroup>
@@ -40,7 +41,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="AStar.Dev.Infrastructure" Version="0.1.2" />
+        <PackageReference Include="AStar.Dev.Infrastructure" Version="0.1.2"/>
         <PackageReference Include="AStar.Dev.Utilities" Version="1.6.2"/>
         <PackageReference Include="AStar.Dev.Functional.Extensions" Version="0.4.5"/>
         <PackageReference Include="AStar.Dev.Technical.Debt.Reporting" Version="0.2.1"/>

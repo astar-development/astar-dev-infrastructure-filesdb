@@ -68,16 +68,19 @@ public sealed class EventType : IEquatable<EventType>
     }
 
     /// <inheritdoc />
-    public override bool Equals(object? obj) => ReferenceEquals(this, obj) || (obj is EventType other && Equals(other));
+    public override bool Equals(object? obj)
+        => ReferenceEquals(this, obj) || (obj is EventType other && Equals(other));
 
     /// <summary>
     ///     Returns the string name of the event type, useful for debugging and display.
     /// </summary>
     /// <returns>The name of the event type.</returns>
-    public override string ToString() => Name;
+    public override string ToString()
+        => Name;
 
     /// <inheritdoc />
-    public override int GetHashCode() => HashCode.Combine(Value, Name);
+    public override int GetHashCode()
+        => HashCode.Combine(Value, Name);
 
     /// <summary>
     ///     Overloads the equality operator to compare two <see cref="EventType" /> objects.
@@ -96,5 +99,6 @@ public sealed class EventType : IEquatable<EventType>
     /// <param name="left">The first <see cref="EventType" /> to compare.</param>
     /// <param name="right">The second <see cref="EventType" /> to compare.</param>
     /// <returns><c>true</c> if the two <see cref="EventType" /> objects are not equal; otherwise, <c>false</c>.</returns>
-    public static bool operator !=(EventType left, EventType right) => !(left == right);
+    public static bool operator !=(EventType left, EventType right)
+        => !(left == right);
 }

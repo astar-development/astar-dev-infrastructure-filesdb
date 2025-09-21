@@ -1,8 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace AStar.Dev.Infrastructure.FilesDb.Models;
+﻿namespace AStar.Dev.Infrastructure.FilesDb.Models;
 
 /// <summary>
 /// </summary>
-[ComplexType]
-public record ImageDetail(int? Width, int? Height);
+public sealed class ImageDetail
+{
+    /// <summary>
+    /// </summary>
+    public int Id { get; set; }
+
+    /// <summary>
+    /// </summary>
+    public int? Width { get; set; }
+
+    /// <summary>
+    /// </summary>
+    public int? Height { get; set; }
+}

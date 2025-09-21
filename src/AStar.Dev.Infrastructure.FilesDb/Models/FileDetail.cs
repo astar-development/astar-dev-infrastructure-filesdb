@@ -1,5 +1,4 @@
 ﻿using System.IO.Abstractions;
-using AStar.Dev.Infrastructure.Data;
 using AStar.Dev.Utilities;
 
 namespace AStar.Dev.Infrastructure.FilesDb.Models;
@@ -7,10 +6,10 @@ namespace AStar.Dev.Infrastructure.FilesDb.Models;
 /// <summary>
 ///     The FileDetail class containing the current properties
 /// </summary>
-public sealed class FileDetail : AuditableEntity
+public sealed class FileDetail
 {
     /// <summary>
-    ///     The default constructor required by EF Core etc
+    ///     The default constructor required by EF Core
     /// </summary>
     public FileDetail()
     {
@@ -40,7 +39,7 @@ public sealed class FileDetail : AuditableEntity
 
     /// <summary>
     /// </summary>
-    public ImageDetail ImageDetail { get; set; } = new(null, null);
+    public FileAccessDetail FileAccessDetail { get; set; } = new();
 
     /// <summary>
     ///     Gets or sets the file name. I know, shocking...
@@ -56,6 +55,11 @@ public sealed class FileDetail : AuditableEntity
     ///     Gets the full name of the file with the path combined
     /// </summary>
     public string FullNameWithPath => Path.Combine(DirectoryName.Value, FileName.Value ?? "");
+
+    /// <summary>
+    ///     Gets or sets the height of the image. I know, shocking...
+    /// </summary>
+    public ImageDetail ImageDetail { get; set; } = new();
 
     /// <summary>
     ///     Gets or sets the file size. I know, shocking...
@@ -74,24 +78,6 @@ public sealed class FileDetail : AuditableEntity
 
     /// <summary>
     /// </summary>
-    public DateTimeOffset FileCreated { get; set; }
-
-    /// <summary>
-    /// </summary>
-    public DateTimeOffset FileLastModified { get; set; }
-
-    /// <summary>
-    /// </summary>
-    public DateTimeOffset? FileLastViewed { get; set; }
-
-    /// <summary>
-    ///     Gets or sets whether the file has been marked as 'needs to move'. I know, shocking...
-    /// </summary>
-    public bool MoveRequired { get; set; }
-
-    /// <summary>
-    ///     Gets or sets the file deletion status. I know, shocking...
-    /// </summary>
     public DeletionStatus DeletionStatus { get; set; } = new();
 
     /// <summary>
@@ -100,5 +86,6 @@ public sealed class FileDetail : AuditableEntity
     /// <returns>
     ///     This object serialized as a JSON object.
     /// </returns>
-    public override string ToString() => this.ToJson();
+    public override string ToString()
+        => this.ToJson();
 }
