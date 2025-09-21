@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace AStar.Dev.Infrastructure.FilesDb.Models;
 
@@ -11,5 +11,6 @@ public record FileName(string Value)
     /// <summary>
     /// </summary>
     /// <returns></returns>
-    public override string ToString() => Value;
+    public override string ToString()
+        => Value;
 }

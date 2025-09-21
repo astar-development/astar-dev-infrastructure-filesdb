@@ -3,8 +3,12 @@
 /// <summary>
 ///     Defines dates/times for soft and hard deletion
 /// </summary>
-public class DeletionStatus
+public sealed class DeletionStatus
 {
+    /// <summary>
+    /// </summary>
+    public int Id { get; set; }
+
     /// <summary>
     ///     Gets or sets when the file was 'soft deleted'. I know, shocking...
     /// </summary>

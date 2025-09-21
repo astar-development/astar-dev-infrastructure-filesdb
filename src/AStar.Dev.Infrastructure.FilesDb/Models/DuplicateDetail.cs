@@ -1,33 +1,42 @@
-using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
 namespace AStar.Dev.Infrastructure.FilesDb.Models;
 
 /// <summary>
-///     The <see cref="DuplicateDetail" /> class defines the fields that will be mapped from the vw_DuplicateDetails in the database
+///     The <see cref="DuplicatesDetails" /> class defines the fields that will be mapped from the vw_DuplicatesDetails in the database
 /// </summary>
-public class DuplicateDetail
+[Keyless]
+public class DuplicatesDetails
 {
+    /// <summary>
+    ///     The ID of the <see cref="FileDetail" /> in the Duplicates list
+    /// </summary>
+    public int Id { get; set; }
+
+    /// <summary>
+    ///     The FileAccessDetailId of the joined <see cref="FileAccessDetail" /> table. The joined data is not in the Duplicates list
+    /// </summary>
+    public int FileAccessDetailId { get; set; }
+
     /// <summary>
     ///     Gets or sets the File Name
     /// </summary>
-    [MaxLength(256)]
-    public required string FileName { get; set; }
+    public string FileName { get; set; } = string.Empty;
 
     /// <summary>
     ///     Gets or sets the Directory Name
     /// </summary>
-    [MaxLength(256)]
-    public required string DirectoryName { get; set; }
+    public string DirectoryName { get; set; } = string.Empty;
 
     /// <summary>
     ///     Gets or sets the File Height
     /// </summary>
-    public int ImageHeight { get; set; }
+    public int Height { get; set; }
 
-    /// <summary>
+  /// <summary>
     ///     Gets or sets the File Width
     /// </summary>
-    public int ImageWidth { get; set; }
+    public int Width { get; set; }
 
     /// <summary>
     ///     Gets or sets the File Size
@@ -37,8 +46,7 @@ public class DuplicateDetail
     /// <summary>
     ///     Gets or sets the File Handle
     /// </summary>
-    [MaxLength(256)]
-    public required string FileHandle { get; set; }
+    public string FileHandle { get; set; } = string.Empty;
 
     /// <summary>
     ///     Gets or sets whether File is an image
@@ -53,22 +61,22 @@ public class DuplicateDetail
     /// <summary>
     ///     Gets or sets the Details Last Updated
     /// </summary>
-    public DateTimeOffset UpdatedOn { get; set; }
+    public DateTime DetailsLastUpdated { get; set; }
 
     /// <summary>
     ///     Gets or sets the Last Viewed date
     /// </summary>
-    public DateTimeOffset? FileLastViewed { get; set; }
+    public DateTime? LastViewed { get; set; }
 
     /// <summary>
     ///     Gets or sets the Soft Deleted flag
     /// </summary>
-    public DateTimeOffset? SoftDeleted { get; set; }
+    public bool SoftDeleted { get; set; }
 
     /// <summary>
     ///     Gets or sets the SoftDeletePending flag
     /// </summary>
-    public DateTimeOffset? SoftDeletePending { get; set; }
+    public bool SoftDeletePending { get; set; }
 
     /// <summary>
     ///     Gets or sets the Move Required flag
@@ -78,5 +86,5 @@ public class DuplicateDetail
     /// <summary>
     ///     Gets or sets the Hard Delete Pending flag
     /// </summary>
-    public DateTimeOffset? HardDeletePending { get; set; }
+    public bool HardDeletePending { get; set; }
 }

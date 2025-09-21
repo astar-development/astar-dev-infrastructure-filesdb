@@ -6,7 +6,7 @@ namespace AStar.Dev.Infrastructure.FilesDb.Models;
 /// </summary>
 public sealed class FileSize
 {
-    private FileSize(long fileLength, int height, int width)
+    private FileSize(long fileLength, long? height, long? width)
     {
         FileLength = fileLength;
         Height     = height;
@@ -21,12 +21,12 @@ public sealed class FileSize
     /// <summary>
     ///     Gets the file height property
     /// </summary>
-    public int Height { get; }
+    public long? Height { get; }
 
     /// <summary>
     ///     Gets the file width property
     /// </summary>
-    public int Width { get; }
+    public long? Width { get; }
 
     /// <summary>
     ///     The Create method will return a populated instance of the <see cref="FileSize" /> class
@@ -43,7 +43,8 @@ public sealed class FileSize
     /// <returns>
     ///     A populated instance of <see cref="FileSize" />.
     /// </returns>
-    public static FileSize Create(long fileLength, int height, int width) => new(fileLength, height, width);
+    public static FileSize Create(long fileLength, long? height, long? width)
+        => new(fileLength, height, width);
 
     /// <summary>
     ///     Returns this object in JSON format
@@ -51,5 +52,6 @@ public sealed class FileSize
     /// <returns>
     ///     This object serialized as a JSON object
     /// </returns>
-    public override string ToString() => this.ToJson();
+    public override string ToString()
+        => this.ToJson();
 }

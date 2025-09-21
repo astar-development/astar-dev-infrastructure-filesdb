@@ -5,6 +5,7 @@ using AStar.Dev.Infrastructure.FilesDb.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -12,9 +13,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AStar.Dev.Infrastructure.FilesDb.Migrations
 {
     [DbContext(typeof(FilesContext))]
-    partial class FilesContextModelSnapshot : ModelSnapshot
+    [Migration("20250919204057_InitialCreation")]
+    partial class InitialCreation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,31 +27,6 @@ namespace AStar.Dev.Infrastructure.FilesDb.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("AStar.Dev.Infrastructure.FilesDb.Models.DeletionStatus", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTimeOffset?>("HardDeletePending")
-                        .HasColumnType("datetimeoffset")
-                        .HasColumnName("HardDeletePending");
-
-                    b.Property<DateTimeOffset?>("SoftDeletePending")
-                        .HasColumnType("datetimeoffset")
-                        .HasColumnName("SoftDeletePending");
-
-                    b.Property<DateTimeOffset?>("SoftDeleted")
-                        .HasColumnType("datetimeoffset")
-                        .HasColumnName("SoftDeleted");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("DeletionStatus", "files");
-                });
 
             modelBuilder.Entity("AStar.Dev.Infrastructure.FilesDb.Models.DuplicatesDetails", b =>
                 {
@@ -184,10 +162,22 @@ namespace AStar.Dev.Infrastructure.FilesDb.Migrations
                     b.Property<DateTime?>("DetailsLastUpdated")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("HardDeletePending")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("HardDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime?>("LastViewed")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("MoveRequired")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("SoftDeletePending")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("SoftDeleted")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
@@ -234,9 +224,6 @@ namespace AStar.Dev.Infrastructure.FilesDb.Migrations
                     b.Property<int>("Id")
                         .HasColumnType("int");
 
-                    b.Property<int>("DeletionStatusId")
-                        .HasColumnType("int");
-
                     b.Property<int>("FileAccessDetailId")
                         .HasColumnType("int");
 
@@ -247,11 +234,25 @@ namespace AStar.Dev.Infrastructure.FilesDb.Migrations
                     b.Property<long>("FileSize")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("ImageDetailId")
-                        .HasColumnType("int");
-
                     b.Property<bool>("IsImage")
                         .HasColumnType("bit");
+
+                    b.ComplexProperty<Dictionary<string, object>>("DeletionStatus", "AStar.Dev.Infrastructure.FilesDb.Models.FileDetail.DeletionStatus#DeletionStatus", b1 =>
+                        {
+                            b1.IsRequired();
+
+                            b1.Property<DateTimeOffset?>("HardDeletePending")
+                                .HasColumnType("datetimeoffset")
+                                .HasColumnName("HardDeletePending");
+
+                            b1.Property<DateTimeOffset?>("SoftDeletePending")
+                                .HasColumnType("datetimeoffset")
+                                .HasColumnName("SoftDeletePending");
+
+                            b1.Property<DateTimeOffset?>("SoftDeleted")
+                                .HasColumnType("datetimeoffset")
+                                .HasColumnName("SoftDeleted");
+                        });
 
                     b.ComplexProperty<Dictionary<string, object>>("DirectoryName", "AStar.Dev.Infrastructure.FilesDb.Models.FileDetail.DirectoryName#DirectoryName", b1 =>
                         {
@@ -271,9 +272,20 @@ namespace AStar.Dev.Infrastructure.FilesDb.Migrations
                                 .HasColumnName("FileName");
                         });
 
-                    b.HasKey("Id");
+                    b.ComplexProperty<Dictionary<string, object>>("ImageDetail", "AStar.Dev.Infrastructure.FilesDb.Models.FileDetail.ImageDetail#ImageDetail", b1 =>
+                        {
+                            b1.IsRequired();
 
-                    b.HasIndex("DeletionStatusId");
+                            b1.Property<int?>("Height")
+                                .HasColumnType("int")
+                                .HasColumnName("ImageHeight");
+
+                            b1.Property<int?>("Width")
+                                .HasColumnType("int")
+                                .HasColumnName("ImageWidth");
+                        });
+
+                    b.HasKey("Id");
 
                     b.HasIndex("FileAccessDetailId");
 
@@ -281,8 +293,6 @@ namespace AStar.Dev.Infrastructure.FilesDb.Migrations
                         .IsUnique();
 
                     b.HasIndex("FileSize");
-
-                    b.HasIndex("ImageDetailId");
 
                     b.HasIndex("IsImage", "FileSize")
                         .HasDatabaseName("IX_FileDetail_DuplicateImages");
@@ -321,27 +331,6 @@ namespace AStar.Dev.Infrastructure.FilesDb.Migrations
                     b.HasIndex("FileClassificationId");
 
                     b.ToTable("FileNamePart", "files");
-                });
-
-            modelBuilder.Entity("AStar.Dev.Infrastructure.FilesDb.Models.ImageDetail", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("Height")
-                        .HasColumnType("int")
-                        .HasColumnName("ImageHeight");
-
-                    b.Property<int?>("Width")
-                        .HasColumnType("int")
-                        .HasColumnName("ImageWidth");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ImageDetail", "files");
                 });
 
             modelBuilder.Entity("AStar.Dev.Infrastructure.FilesDb.Models.ModelToIgnore", b =>
@@ -400,29 +389,13 @@ namespace AStar.Dev.Infrastructure.FilesDb.Migrations
 
             modelBuilder.Entity("AStar.Dev.Infrastructure.FilesDb.Models.FileDetail", b =>
                 {
-                    b.HasOne("AStar.Dev.Infrastructure.FilesDb.Models.DeletionStatus", "DeletionStatus")
-                        .WithMany()
-                        .HasForeignKey("DeletionStatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("AStar.Dev.Infrastructure.FilesDb.Models.FileAccessDetail", "FileAccessDetail")
                         .WithMany()
                         .HasForeignKey("FileAccessDetailId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AStar.Dev.Infrastructure.FilesDb.Models.ImageDetail", "ImageDetail")
-                        .WithMany()
-                        .HasForeignKey("ImageDetailId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("DeletionStatus");
-
                     b.Navigation("FileAccessDetail");
-
-                    b.Navigation("ImageDetail");
                 });
 
             modelBuilder.Entity("AStar.Dev.Infrastructure.FilesDb.Models.FileNamePart", b =>

@@ -1,8 +1,8 @@
-﻿namespace AStar.Dev.Infrastructure.FilesDb;
+namespace AStar.Dev.Infrastructure.FilesDb;
 
 /// <summary>
 /// </summary>
-public static class Constants
+public class Constants
 {
     /// <summary>
     /// </summary>
