@@ -4,78 +4,6 @@
         <name>AStar.Dev.Infrastructure.FilesDb</name>
     </assembly>
     <members>
-        <member name="T:AStar.Dev.Infrastructure.FilesDb.Configurations.ComplexPropertyBuilderConfiguration">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:AStar.Dev.Infrastructure.FilesDb.Configurations.ComplexPropertyBuilderConfiguration.Configure``1(Microsoft.EntityFrameworkCore.Metadata.Builders.ComplexPropertyBuilder{``0},AStar.Dev.Infrastructure.FilesDb.Configurations.IComplexPropertyConfiguration{``0})">
-            <summary>
-            </summary>
-            <param name="propertyBuilder"></param>
-            <param name="configuration"></param>
-            <typeparam name="TEntity"></typeparam>
-            <returns></returns>
-        </member>
-        <member name="T:AStar.Dev.Infrastructure.FilesDb.Configurations.EventConfiguration">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:AStar.Dev.Infrastructure.FilesDb.Configurations.EventConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{AStar.Dev.Infrastructure.FilesDb.Models.Event})">
-            <inheritdoc />
-        </member>
-        <member name="T:AStar.Dev.Infrastructure.FilesDb.Configurations.FileAccessDetailConfiguration">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:AStar.Dev.Infrastructure.FilesDb.Configurations.FileAccessDetailConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{AStar.Dev.Infrastructure.FilesDb.Models.FileAccessDetail})">
-            <inheritdoc />
-        </member>
-        <member name="T:AStar.Dev.Infrastructure.FilesDb.Configurations.FileClassificationConfiguration">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:AStar.Dev.Infrastructure.FilesDb.Configurations.FileClassificationConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{AStar.Dev.Infrastructure.FilesDb.Models.FileClassification})">
-            <inheritdoc />
-        </member>
-        <member name="T:AStar.Dev.Infrastructure.FilesDb.Configurations.FileDetailConfiguration">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:AStar.Dev.Infrastructure.FilesDb.Configurations.FileDetailConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{AStar.Dev.Infrastructure.FilesDb.Models.FileDetail})">
-            <inheritdoc />
-        </member>
-        <member name="T:AStar.Dev.Infrastructure.FilesDb.Configurations.FileNamePartConfiguration">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:AStar.Dev.Infrastructure.FilesDb.Configurations.FileNamePartConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{AStar.Dev.Infrastructure.FilesDb.Models.FileNamePart})">
-            <inheritdoc />
-        </member>
-        <member name="T:AStar.Dev.Infrastructure.FilesDb.Configurations.IComplexPropertyConfiguration`1">
-            <summary>
-            </summary>
-            <typeparam name="TEntity"></typeparam>
-        </member>
-        <member name="M:AStar.Dev.Infrastructure.FilesDb.Configurations.IComplexPropertyConfiguration`1.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.ComplexPropertyBuilder{`0})">
-            <summary>
-            </summary>
-            <param name="builder"></param>
-            <returns></returns>
-        </member>
-        <member name="T:AStar.Dev.Infrastructure.FilesDb.Configurations.ModelToIgnoreConfiguration">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:AStar.Dev.Infrastructure.FilesDb.Configurations.ModelToIgnoreConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{AStar.Dev.Infrastructure.FilesDb.Models.ModelToIgnore})">
-            <inheritdoc />
-        </member>
-        <member name="T:AStar.Dev.Infrastructure.FilesDb.Configurations.TagToIgnoreConfiguration">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:AStar.Dev.Infrastructure.FilesDb.Configurations.TagToIgnoreConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{AStar.Dev.Infrastructure.FilesDb.Models.TagToIgnore})">
-            <inheritdoc />
-        </member>
         <member name="T:AStar.Dev.Infrastructure.FilesDb.Constants">
             <summary>
             </summary>
@@ -84,11 +12,30 @@
             <summary>
             </summary>
         </member>
+        <member name="T:AStar.Dev.Infrastructure.FilesDb.Data.Configurations.ComplexPropertyBuilderConfiguration">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:AStar.Dev.Infrastructure.FilesDb.Data.Configurations.ComplexPropertyBuilderConfiguration.Configure``1(Microsoft.EntityFrameworkCore.Metadata.Builders.ComplexPropertyBuilder{``0},AStar.Dev.Infrastructure.FilesDb.Data.Configurations.IComplexPropertyConfiguration{``0})">
+            <summary>
+            </summary>
+            <param name="propertyBuilder"></param>
+            <param name="configuration"></param>
+            <typeparam name="TEntity"></typeparam>
+            <returns></returns>
+        </member>
         <member name="T:AStar.Dev.Infrastructure.FilesDb.Data.Configurations.EventConfiguration">
             <summary>
             </summary>
         </member>
         <member name="M:AStar.Dev.Infrastructure.FilesDb.Data.Configurations.EventConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{AStar.Dev.Infrastructure.FilesDb.Models.Event})">
+            <inheritdoc />
+        </member>
+        <member name="T:AStar.Dev.Infrastructure.FilesDb.Data.Configurations.FileAccessDetailConfiguration">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:AStar.Dev.Infrastructure.FilesDb.Data.Configurations.FileAccessDetailConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{AStar.Dev.Infrastructure.FilesDb.Models.FileAccessDetail})">
             <inheritdoc />
         </member>
         <member name="T:AStar.Dev.Infrastructure.FilesDb.Data.Configurations.FileClassificationConfiguration">
@@ -110,6 +57,31 @@
             </summary>
         </member>
         <member name="M:AStar.Dev.Infrastructure.FilesDb.Data.Configurations.FileNamePartConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{AStar.Dev.Infrastructure.FilesDb.Models.FileNamePart})">
+            <inheritdoc />
+        </member>
+        <member name="T:AStar.Dev.Infrastructure.FilesDb.Data.Configurations.IComplexPropertyConfiguration`1">
+            <summary>
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="M:AStar.Dev.Infrastructure.FilesDb.Data.Configurations.IComplexPropertyConfiguration`1.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.ComplexPropertyBuilder{`0})">
+            <summary>
+            </summary>
+            <param name="builder"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AStar.Dev.Infrastructure.FilesDb.Data.Configurations.ModelToIgnoreConfiguration">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:AStar.Dev.Infrastructure.FilesDb.Data.Configurations.ModelToIgnoreConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{AStar.Dev.Infrastructure.FilesDb.Models.ModelToIgnore})">
+            <inheritdoc />
+        </member>
+        <member name="T:AStar.Dev.Infrastructure.FilesDb.Data.Configurations.TagToIgnoreConfiguration">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:AStar.Dev.Infrastructure.FilesDb.Data.Configurations.TagToIgnoreConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{AStar.Dev.Infrastructure.FilesDb.Models.TagToIgnore})">
             <inheritdoc />
         </member>
         <member name="T:AStar.Dev.Infrastructure.FilesDb.Data.FileDetailDeletionStatusExtensions">
@@ -245,6 +217,9 @@
                 Gets or sets the DuplicatesDetails loaded from the configured view in the database
             </summary>
         </member>
+        <member name="M:AStar.Dev.Infrastructure.FilesDb.Data.FilesContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)">
+            <inheritdoc />
+        </member>
         <member name="M:AStar.Dev.Infrastructure.FilesDb.Data.FilesContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <summary>
                 The overridden OnModelCreating method
@@ -287,88 +262,16 @@
                 The original list of files for further filtering.
             </returns>
         </member>
-        <member name="T:AStar.Dev.Infrastructure.FilesDb.Migrations.RecreateAgain">
+        <member name="T:AStar.Dev.Infrastructure.FilesDb.Migrations.RecreateDatabase">
             <inheritdoc />
         </member>
-        <member name="M:AStar.Dev.Infrastructure.FilesDb.Migrations.RecreateAgain.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:AStar.Dev.Infrastructure.FilesDb.Migrations.RecreateDatabase.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:AStar.Dev.Infrastructure.FilesDb.Migrations.RecreateAgain.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:AStar.Dev.Infrastructure.FilesDb.Migrations.RecreateDatabase.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:AStar.Dev.Infrastructure.FilesDb.Migrations.RecreateAgain.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:AStar.Dev.Infrastructure.FilesDb.Migrations.RecreateAgain2">
-            <inheritdoc />
-        </member>
-        <member name="M:AStar.Dev.Infrastructure.FilesDb.Migrations.RecreateAgain2.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:AStar.Dev.Infrastructure.FilesDb.Migrations.RecreateAgain2.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:AStar.Dev.Infrastructure.FilesDb.Migrations.RecreateAgain2.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:AStar.Dev.Infrastructure.FilesDb.Migrations.UpdateFileNameConfiguration">
-            <inheritdoc />
-        </member>
-        <member name="M:AStar.Dev.Infrastructure.FilesDb.Migrations.UpdateFileNameConfiguration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:AStar.Dev.Infrastructure.FilesDb.Migrations.UpdateFileNameConfiguration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:AStar.Dev.Infrastructure.FilesDb.Migrations.UpdateFileNameConfiguration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:AStar.Dev.Infrastructure.FilesDb.Migrations.AddFileDetailIndexes">
-            <inheritdoc />
-        </member>
-        <member name="M:AStar.Dev.Infrastructure.FilesDb.Migrations.AddFileDetailIndexes.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:AStar.Dev.Infrastructure.FilesDb.Migrations.AddFileDetailIndexes.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:AStar.Dev.Infrastructure.FilesDb.Migrations.AddFileDetailIndexes.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:AStar.Dev.Infrastructure.FilesDb.Migrations.AddDuplicateImagesIndex">
-            <inheritdoc />
-        </member>
-        <member name="M:AStar.Dev.Infrastructure.FilesDb.Migrations.AddDuplicateImagesIndex.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:AStar.Dev.Infrastructure.FilesDb.Migrations.AddDuplicateImagesIndex.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:AStar.Dev.Infrastructure.FilesDb.Migrations.AddDuplicateImagesIndex.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:AStar.Dev.Infrastructure.FilesDb.Migrations.InitialCreation">
-            <inheritdoc />
-        </member>
-        <member name="M:AStar.Dev.Infrastructure.FilesDb.Migrations.InitialCreation.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:AStar.Dev.Infrastructure.FilesDb.Migrations.InitialCreation.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:AStar.Dev.Infrastructure.FilesDb.Migrations.InitialCreation.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:AStar.Dev.Infrastructure.FilesDb.Migrations.RestructureDeletionAndImageDetails">
-            <inheritdoc />
-        </member>
-        <member name="M:AStar.Dev.Infrastructure.FilesDb.Migrations.RestructureDeletionAndImageDetails.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:AStar.Dev.Infrastructure.FilesDb.Migrations.RestructureDeletionAndImageDetails.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:AStar.Dev.Infrastructure.FilesDb.Migrations.RestructureDeletionAndImageDetails.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:AStar.Dev.Infrastructure.FilesDb.Migrations.RecreateDatabase.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
         <member name="T:AStar.Dev.Infrastructure.FilesDb.Models.DeletionStatus">
@@ -755,6 +658,11 @@
                 Gets or sets the file size. I know, shocking...
             </summary>
         </member>
+        <member name="P:AStar.Dev.Infrastructure.FilesDb.Models.FileDetail.CreatedDate">
+            <summary>
+                Gets or sets the file Creation Date. I know, shocking...
+            </summary>
+        </member>
         <member name="P:AStar.Dev.Infrastructure.FilesDb.Models.FileDetail.IsImage">
             <summary>
                 Gets or sets whether the file is of a supported image type
@@ -939,15 +847,7 @@
             <summary>
             </summary>
         </member>
-        <member name="P:AStar.Dev.Infrastructure.FilesDb.Models.ImageDetail.Id">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:AStar.Dev.Infrastructure.FilesDb.Models.ImageDetail.Width">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:AStar.Dev.Infrastructure.FilesDb.Models.ImageDetail.Height">
+        <member name="M:AStar.Dev.Infrastructure.FilesDb.Models.ImageDetail.#ctor(System.Nullable{System.Int32},System.Nullable{System.Int32})">
             <summary>
             </summary>
         </member>

@@ -60,12 +60,17 @@ public sealed class FileDetail
     /// <summary>
     ///     Gets or sets the height of the image. I know, shocking...
     /// </summary>
-    public ImageDetail ImageDetail { get; set; } = new();
+    public ImageDetail ImageDetail { get; set; } = new(null, null);
 
     /// <summary>
     ///     Gets or sets the file size. I know, shocking...
     /// </summary>
     public long FileSize { get; set; }
+
+    /// <summary>
+    ///     Gets or sets the file Creation Date. I know, shocking...
+    /// </summary>
+    public DateTimeOffset CreatedDate { get; set; }
 
     /// <summary>
     ///     Gets or sets whether the file is of a supported image type

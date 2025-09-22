@@ -1,4 +1,3 @@
-using AStar.Dev.Infrastructure.Data.Configurations;
 using AStar.Dev.Infrastructure.FilesDb.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -22,13 +21,11 @@ public class FileDetailConfiguration : IEntityTypeConfiguration<FileDetail>
         _ = builder.Ignore(fileDetail => fileDetail.FileName);
         _ = builder.Ignore(fileDetail => fileDetail.DirectoryName);
         _ = builder.Ignore(fileDetail => fileDetail.FullNameWithPath);
+        _ = builder.Ignore(fileDetail => fileDetail.ImageDetail);
 
         _ = builder.Property(file => file.FileHandle)
                    .HasColumnType("nvarchar(256)")
                    .HasConversion(fileHandle => fileHandle.Value, fileHandle => new(fileHandle));
-
-        _ = builder.ComplexProperty(fileDetail => fileDetail.ImageDetail)
-                   .Configure(new ImageDetailConfiguration());
 
         _ = builder.ComplexProperty(fileDetail => fileDetail.DirectoryName)
                    .Configure(new DirectoryNameConfiguration());
@@ -36,8 +33,8 @@ public class FileDetailConfiguration : IEntityTypeConfiguration<FileDetail>
         _ = builder.ComplexProperty(fileDetail => fileDetail.FileName)
                    .Configure(new FileNameConfiguration());
 
-        _ = builder.ComplexProperty(fileDetail => fileDetail.DeletionStatus)
-                   .Configure(new DeletionStatusConfiguration());
+        _ = builder.ComplexProperty(fileDetail => fileDetail.ImageDetail)
+                   .Configure(new ImageDetailConfiguration());
 
         _ = builder.HasIndex(fileDetail => fileDetail.FileHandle).IsUnique();
         _ = builder.HasIndex(fileDetail => fileDetail.FileSize);
