@@ -2,17 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace AStar.Dev.Infrastructure.FilesDb.Configurations;
+namespace AStar.Dev.Infrastructure.FilesDb.Data.Configurations;
 
 /// <summary>
 /// </summary>
-public class ModelToIgnoreConfiguration : IEntityTypeConfiguration<ModelToIgnore>
+public class TagToIgnoreConfiguration : IEntityTypeConfiguration<TagToIgnore>
 {
     /// <inheritdoc />
-    public void Configure(EntityTypeBuilder<ModelToIgnore> builder)
+    public void Configure(EntityTypeBuilder<TagToIgnore> builder)
     {
         _ = builder
-            .ToTable(nameof(ModelToIgnore), Constants.SchemaName)
+            .ToTable(nameof(TagToIgnore), Constants.SchemaName)
             .HasKey(fileDetail => fileDetail.Id);
 
         _ = builder.Property(fileDetail => fileDetail.Value).HasMaxLength(300);

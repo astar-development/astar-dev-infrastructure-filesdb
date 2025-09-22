@@ -1,19 +1,37 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace AStar.Dev.Infrastructure.FilesDb.Migrations;
 
-#pragma warning disable IDE0058 // Unnecessary assignment of a value
 /// <inheritdoc />
-public partial class InitialCreation : Migration
+[SuppressMessage("Style", "IDE0058:Expression value is never used")]
+[SuppressMessage("Style", "IDE0053:Use expression body for lambda expression")]
+public partial class RecreateDatabase : Migration
 {
     /// <inheritdoc />
     protected override void Up(MigrationBuilder migrationBuilder)
     {
         migrationBuilder.EnsureSchema(
                                       name: "files");
+
+        migrationBuilder.CreateTable(
+                                     name: "DeletionStatus",
+                                     schema: "files",
+                                     columns: table => new
+                                                       {
+                                                           Id = table.Column<int>(type: "int", nullable: false)
+                                                                     .Annotation("SqlServer:Identity", "1, 1"),
+                                                           SoftDeleted       = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                                                           SoftDeletePending = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                                                           HardDeletePending = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
+                                                       },
+                                     constraints: table =>
+                                                  {
+                                                      table.PrimaryKey("PK_DeletionStatus", x => x.Id);
+                                                  });
 
         migrationBuilder.CreateTable(
                                      name: "Event",
@@ -35,7 +53,10 @@ public partial class InitialCreation : Migration
                                                            EventName        = table.Column<string>(type: "nvarchar(max)", nullable: false),
                                                            EventType        = table.Column<int>(type: "int", nullable: false)
                                                        },
-                                     constraints: table => table.PrimaryKey("PK_Event", x => x.Id));
+                                     constraints: table =>
+                                                  {
+                                                      table.PrimaryKey("PK_Event", x => x.Id);
+                                                  });
 
         migrationBuilder.CreateTable(
                                      name: "FileAccessDetail",
@@ -46,13 +67,12 @@ public partial class InitialCreation : Migration
                                                                      .Annotation("SqlServer:Identity", "1, 1"),
                                                            DetailsLastUpdated = table.Column<DateTime>(type: "datetime2", nullable: true),
                                                            LastViewed         = table.Column<DateTime>(type: "datetime2", nullable: true),
-                                                           SoftDeleted        = table.Column<bool>(type: "bit", nullable: false),
-                                                           SoftDeletePending  = table.Column<bool>(type: "bit", nullable: false),
-                                                           MoveRequired       = table.Column<bool>(type: "bit", nullable: false),
-                                                           HardDeletePending  = table.Column<bool>(type: "bit", nullable: false),
-                                                           HardDeleted        = table.Column<bool>(type: "bit", nullable: false)
+                                                           MoveRequired       = table.Column<bool>(type: "bit", nullable: false)
                                                        },
-                                     constraints: table => table.PrimaryKey("PK_FileAccessDetail", x => x.Id));
+                                     constraints: table =>
+                                                  {
+                                                      table.PrimaryKey("PK_FileAccessDetail", x => x.Id);
+                                                  });
 
         migrationBuilder.CreateTable(
                                      name: "FileClassification",
@@ -65,9 +85,12 @@ public partial class InitialCreation : Migration
                                                            Celebrity       = table.Column<bool>(type: "bit", nullable: false),
                                                            IncludeInSearch = table.Column<bool>(type: "bit", nullable: false),
                                                            UpdatedBy       = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                                                           UpdatedOn       = table.Column<DateTime>(type: "datetime2", nullable: false)
+                                                           UpdatedOn       = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
                                                        },
-                                     constraints: table => table.PrimaryKey("PK_FileClassification", x => x.Id));
+                                     constraints: table =>
+                                                  {
+                                                      table.PrimaryKey("PK_FileClassification", x => x.Id);
+                                                  });
 
         migrationBuilder.CreateTable(
                                      name: "ModelToIgnore",
@@ -78,7 +101,10 @@ public partial class InitialCreation : Migration
                                                                      .Annotation("SqlServer:Identity", "1, 1"),
                                                            Value = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false)
                                                        },
-                                     constraints: table => table.PrimaryKey("PK_ModelToIgnore", x => x.Id));
+                                     constraints: table =>
+                                                  {
+                                                      table.PrimaryKey("PK_ModelToIgnore", x => x.Id);
+                                                  });
 
         migrationBuilder.CreateTable(
                                      name: "TagToIgnore",
@@ -90,7 +116,10 @@ public partial class InitialCreation : Migration
                                                            Value       = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
                                                            IgnoreImage = table.Column<bool>(type: "bit", nullable: false)
                                                        },
-                                     constraints: table => table.PrimaryKey("PK_TagToIgnore", x => x.Id));
+                                     constraints: table =>
+                                                  {
+                                                      table.PrimaryKey("PK_TagToIgnore", x => x.Id);
+                                                  });
 
         migrationBuilder.CreateTable(
                                      name: "FileDetail",
@@ -100,11 +129,10 @@ public partial class InitialCreation : Migration
                                                            Id                 = table.Column<int>(type: "int", nullable: false),
                                                            FileAccessDetailId = table.Column<int>(type: "int", nullable: false),
                                                            FileSize           = table.Column<long>(type: "bigint", nullable: false),
+                                                           CreatedDate        = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
                                                            IsImage            = table.Column<bool>(type: "bit", nullable: false),
                                                            FileHandle         = table.Column<string>(type: "nvarchar(256)", nullable: false),
-                                                           HardDeletePending  = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                                                           SoftDeletePending  = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                                                           SoftDeleted        = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                                                           DeletionStatusId   = table.Column<int>(type: "int", nullable: false),
                                                            DirectoryName      = table.Column<string>(type: "nvarchar(256)", nullable: false),
                                                            FileName           = table.Column<string>(type: "nvarchar(256)", nullable: false),
                                                            ImageHeight        = table.Column<int>(type: "int", nullable: true),
@@ -113,6 +141,13 @@ public partial class InitialCreation : Migration
                                      constraints: table =>
                                                   {
                                                       table.PrimaryKey("PK_FileDetail", x => x.Id);
+                                                      table.ForeignKey(
+                                                                       name: "FK_FileDetail_DeletionStatus_DeletionStatusId",
+                                                                       column: x => x.DeletionStatusId,
+                                                                       principalSchema: "files",
+                                                                       principalTable: "DeletionStatus",
+                                                                       principalColumn: "Id",
+                                                                       onDelete: ReferentialAction.Cascade);
                                                       table.ForeignKey(
                                                                        name: "FK_FileDetail_FileAccessDetail_FileAccessDetailId",
                                                                        column: x => x.FileAccessDetailId,
@@ -133,7 +168,7 @@ public partial class InitialCreation : Migration
                                                            IncludeInSearch      = table.Column<bool>(type: "bit", nullable: false),
                                                            FileClassificationId = table.Column<int>(type: "int", nullable: true),
                                                            UpdatedBy            = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                                                           UpdatedOn            = table.Column<DateTime>(type: "datetime2", nullable: false)
+                                                           UpdatedOn            = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
                                                        },
                                      constraints: table =>
                                                   {
@@ -187,10 +222,20 @@ public partial class InitialCreation : Migration
                                      column: "FileDetailsId");
 
         migrationBuilder.CreateIndex(
+                                     name: "IX_FileDetail_DeletionStatusId",
+                                     schema: "files",
+                                     table: "FileDetail",
+                                     column: "DeletionStatusId");
+
+#pragma warning disable IDE0058
+        migrationBuilder.CreateIndex(
                                      name: "IX_FileDetail_DuplicateImages",
                                      schema: "files",
                                      table: "FileDetail",
-                                     columns: ["IsImage", "FileSize"]);
+#pragma warning disable CA1861
+                                     columns: new[] { "IsImage", "FileSize" });
+#pragma warning restore CA1861
+#pragma warning restore IDE0058
 
         migrationBuilder.CreateIndex(
                                      name: "IX_FileDetail_FileAccessDetailId",
@@ -250,9 +295,11 @@ public partial class InitialCreation : Migration
                                    schema: "files");
 
         migrationBuilder.DropTable(
+                                   name: "DeletionStatus",
+                                   schema: "files");
+
+        migrationBuilder.DropTable(
                                    name: "FileAccessDetail",
                                    schema: "files");
     }
-
-#pragma warning restore IDE0058 // Unnecessary assignment of a value
 }

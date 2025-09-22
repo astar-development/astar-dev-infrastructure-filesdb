@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace AStar.Dev.Infrastructure.FilesDb.Configurations;
+namespace AStar.Dev.Infrastructure.FilesDb.Data.Configurations;
 
 /// <summary>
 /// </summary>
