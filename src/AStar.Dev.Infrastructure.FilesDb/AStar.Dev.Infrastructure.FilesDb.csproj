@@ -30,8 +30,8 @@
         <RepositoryUrl>https://github.com/astar-development/astar-dev-infrastructure-filesdb.git</RepositoryUrl>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <Title>AStar Dev Infrastructure FilesDb</Title>
-        <PackageReleaseNotes>Rework the File Classifications area and update for AStar Functional Results.</PackageReleaseNotes>
-        <Version>0.2.0</Version>
+        <PackageReleaseNotes>Rework the Image Details and Add File Created date.</PackageReleaseNotes>
+        <Version>0.2.1</Version>
     </PropertyGroup>
 
     <ItemGroup>
